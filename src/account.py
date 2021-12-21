@@ -6,15 +6,15 @@ def init():
     conn = sqlite3.connect('asset.db')
     c = conn.cursor()
     c.execute('''DROP TABLE IF EXISTS account''')
-    c.execute('''CREATE TABLE account(id INTEGER PRIMARY KEY, name TEXT, acc_number INTEGER, balance FLOAT, iso_currency_code TEXT)''')
+    c.execute('''CREATE TABLE account(id INTEGER PRIMARY KEY, name TEXT, account_number TEXT, balance FLOAT, iso_currency_code TEXT)''')
     conn.close()
 
 
-def add_account(name, acc_number, balance, iso_currency_code):
+def add_account(name, account_number, balance, iso_currency_code):
     conn = sqlite3.connect('asset.db')
     c = conn.cursor()
-    c.execute('''INSERT INTO account (name, acc_number, balance, iso_currency_code) VALUES(?,?,?,?)''',
-              (name, acc_number, balance, iso_currency_code))
+    c.execute('''INSERT INTO account (name, account_number, balance, iso_currency_code) VALUES(?,?,?,?)''',
+              (name, account_number, balance, iso_currency_code))
     conn.commit()
     conn.close()
 
